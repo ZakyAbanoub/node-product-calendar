@@ -18,7 +18,7 @@ export const getUpdates = async (req, res) => {
 export const getUpdateById = async (req, res) => {
   const update = await prisma.update.findFirst({
     where: {
-      id: req.body.req.params.id,
+      id: req.params.id,
     },
   });
   res.json({ data: update });
@@ -36,7 +36,15 @@ export const createUpdate = async (req, res) => {
   }
 
   const update = await prisma.update.create({
-    data: req.body,
+    data: {
+      title: req.body.title,
+      body: req.body.body,
+      product: {
+        connect: {
+          id: product.id,
+        },
+      },
+    },
   });
 
   res.json({ data: update });
