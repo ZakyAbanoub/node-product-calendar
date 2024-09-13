@@ -37,7 +37,7 @@ JWT_SECRET="your-secret"
 ## Running the Application
 To run the server, use the following command:
 ```bash
-npm start
+npm run dev
 ```
 
 ## Testing
